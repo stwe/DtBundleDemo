@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>Post</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ post.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ post.title }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ post.content }}</td>
+            </tr>
+            <tr>
+                <th>Visible</th>
+                <td>{% if post.visible %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Publishedat</th>
+                <td>{% if post.publishedAt %}{{ post.publishedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if post.updatedAt %}{{ post.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('post_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
