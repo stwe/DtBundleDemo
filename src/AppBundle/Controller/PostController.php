@@ -18,6 +18,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @Route("/post")
  * @Security("has_role('ROLE_USER')")
+ *
+ * @package AppBundle\Controller
  */
 class PostController extends Controller
 {

@@ -15,6 +15,24 @@ class PostDatatable extends AbstractDatatableView
     /**
      * {@inheritdoc}
      */
+
+    public function getLineFormatter()
+    {
+        $router = $this->router;
+
+        $formatter = function($line) use ($router) {
+            $route = $router->generate('profile_show', array('id' => $line['createdBy']['id']));
+            $line['createdBy']['username'] = '<a href="' . $route . '">' . $line['createdBy']['username'] . '</a>';
+
+            return $line;
+        };
+
+        return $formatter;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function buildDatatable(array $options = array())
     {
         $users = $this->em->getRepository('AppBundle:User')->findAll();

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h2>Public Profile</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Posts</th>
+                <td>{{ user.posts|length }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('post_index') }}" class="btn btn-primary">Back to the list</a>
+
+{% endblock %}
