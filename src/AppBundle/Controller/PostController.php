@@ -64,6 +64,8 @@ class PostController extends Controller
      *
      * @Route("/", name="post_index")
      * @Method("GET")
+     *
+     * @return Response
      */
     public function indexAction()
     {
@@ -78,7 +80,7 @@ class PostController extends Controller
     /**
      * @Route("/results", name="post_results")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function indexResultsAction()
     {
@@ -93,8 +95,12 @@ class PostController extends Controller
     /**
      * Creates a new Post entity.
      *
+     * @param Request $request
+     *
      * @Route("/new", name="post_new")
      * @Method({"GET", "POST"})
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function newAction(Request $request)
     {
@@ -119,8 +125,12 @@ class PostController extends Controller
     /**
      * Finds and displays a Post entity.
      *
+     * @param Post $post
+     *
      * @Route("/{id}", name="post_show", options={"expose"=true})
      * @Method("GET")
+     *
+     * @return Response
      */
     public function showAction(Post $post)
     {
@@ -135,8 +145,13 @@ class PostController extends Controller
     /**
      * Displays a form to edit an existing Post entity.
      *
+     * @param Request $request
+     * @param Post    $post
+     *
      * @Route("/{id}/edit", name="post_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Request $request, Post $post)
     {
@@ -162,8 +177,13 @@ class PostController extends Controller
     /**
      * Deletes a Post entity.
      *
+     * @param Request $request
+     * @param Post    $post
+     *
      * @Route("/{id}", name="post_delete")
      * @Method("DELETE")
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Post $post)
     {

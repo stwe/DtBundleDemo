@@ -26,7 +26,7 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="createdby")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="createdBy")
      */
     protected $posts;
 
@@ -43,7 +43,7 @@ class User extends BaseUser
     /**
      * Add post.
      *
-     * @param \AppBundle\Entity\Post $post
+     * @param Post $post
      *
      * @return $this
      */

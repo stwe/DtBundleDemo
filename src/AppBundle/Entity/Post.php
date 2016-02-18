@@ -74,13 +74,15 @@ class Post
      * @Gedmo\Blameable(on="create")
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
      */
-    private $createdby;
+    private $createdBy;
 
     /**
      * Post constructor.
      */
     public function __construct()
-    {}
+    {
+        $this->visible = false;
+    }
 
     /**
      * @return string
@@ -233,26 +235,26 @@ class Post
     }
 
     /**
-     * Set createdby.
+     * Set createdBy.
      *
-     * @param User $createdby
+     * @param User $createdBy
      *
      * @return $this
      */
-    public function setCreatedby(User $createdby = null)
+    public function setCreatedBy(User $createdBy = null)
     {
-        $this->createdby = $createdby;
+        $this->createdBy = $createdBy;
 
         return $this;
     }
 
     /**
-     * Get createdby.
+     * Get createdBy.
      *
      * @return User
      */
-    public function getCreatedby()
+    public function getCreatedBy()
     {
-        return $this->createdby;
+        return $this->createdBy;
     }
 }

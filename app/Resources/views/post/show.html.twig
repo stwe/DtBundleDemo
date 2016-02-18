@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <h1>Post</h1>
+    <h2>Post</h2>
 
     <table class="table">
         <tbody>
@@ -32,17 +32,11 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <hr>
+
+    <a href="{{ path('post_index') }}" class="btn btn-primary">Back to the list</a>
+    <a href="{{ path('post_edit', { 'id': post.id }) }}" class="btn btn-primary">Edit</a>
+    {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="btn btn-danger">
+    {{ form_end(delete_form) }}
 {% endblock %}

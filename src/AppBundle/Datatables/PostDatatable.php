@@ -43,7 +43,19 @@ class PostDatatable extends AbstractDatatableView
                 'buttons' =>
                     array(
                         'excel',
-                        'pdf',
+                        'pdf' => array(
+                            'extend' => 'pdf',
+                            'exportOptions' => array(
+                                // show only the following columns:
+                                'columns' => array(
+                                    '2', // title column
+                                    '3', // visible column
+                                    '4', // publishedAt column
+                                    '5', // updatedAt column
+                                    '6', // createdBy column
+                                )
+                            )
+                        ),
                     ),
                 'responsive' => true
             )
@@ -104,11 +116,11 @@ class PostDatatable extends AbstractDatatableView
                 'title' => 'Updated at',
                 'name' => 'daterange',
             ))
-            ->add('createdby.username', 'column', array(
+            ->add('createdBy.username', 'column', array(
                 'title' => 'Created By',
                 'filter_type' => 'select',
                 'filter_options' => array('' => 'All') + $this->getCollectionAsOptionsArray($users, 'username', 'username'),
-                'filter_property' => 'createdby.username',
+                'filter_property' => 'createdBy.username',
                 'search_type' => 'eq',
             ))
             ->add(null, 'action', array(

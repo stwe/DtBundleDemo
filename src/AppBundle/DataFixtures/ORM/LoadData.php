@@ -50,9 +50,9 @@ class LoadData implements FixtureInterface
             $post[$i]->setPublishedAt($mod->add(new \DateInterval("P{$i}D")));
 
             if (rand(0, 1)) {
-                $post[$i]->setCreatedby($user1);
+                $post[$i]->setCreatedBy($user1);
             } else {
-                $post[$i]->setCreatedby($userAdmin);
+                $post[$i]->setCreatedBy($userAdmin);
             }
 
             $manager->persist($post[$i]);
