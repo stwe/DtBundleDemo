@@ -85,6 +85,7 @@ class PostDatatable extends AbstractDatatableView
         ));
 
         $this->options->set(array(
+            'length_menu' => array(10, 25, 50, 100, -1),
             'class' => Style::BOOTSTRAP_3_STYLE,
             'individual_filtering' => true,
             'individual_filtering_position' => 'head',
