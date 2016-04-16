@@ -186,6 +186,10 @@ class PostDatatable extends AbstractDatatableView
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
+                        'role' => 'ROLE_ADMIN',
+                        'render_if' => function($rowEntity) {
+                            return ($rowEntity['visible'] === true);
+                        },
                     )
                 )
             ))
