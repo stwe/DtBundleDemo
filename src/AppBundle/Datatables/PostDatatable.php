@@ -92,6 +92,14 @@ class PostDatatable extends AbstractDatatableView
             'use_integration_options' => true,
         ));
 
+        $this->callbacks->set(array(
+            'init_complete' => ':post:init.js.twig'
+        ));
+
+        $this->events->set(array(
+            'order' => ':post:order.js.twig'
+        ));
+
         $this->columnBuilder
             ->add(null, 'multiselect', array(
                 'start_html' => '<div class="wrapper" id="testwrapper">',
