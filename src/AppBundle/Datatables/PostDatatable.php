@@ -116,7 +116,9 @@ class PostDatatable extends AbstractDatatableView
             ))
             ->add('id', 'column', array(
                 'title' => 'Id',
-                'search_type' => 'eq',
+                'filter' => array('text', array(
+                    'search_type' => 'eq'
+                ))
             ))
             ->add('title', 'column', array(
                 'title' => 'Title',
@@ -126,21 +128,25 @@ class PostDatatable extends AbstractDatatableView
                 'title' => 'Visible',
                 'true_label' => 'Yes',
                 'false_label' => 'No',
+                'filter' => array('select', array(
+                    'search_type' => 'eq',
+                    'select_options' => array('' => 'All', '1' => 'Yes', '0' => 'No')
+                ))
             ))
             ->add('publishedAt', 'datetime', array(
                 'title' => 'Published at',
-                'name' => 'daterange',
+                'filter' => array('daterange', array())
             ))
             ->add('updatedAt', 'datetime', array(
                 'title' => 'Updated at',
-                'name' => 'daterange',
+                'filter' => array('daterange', array())
             ))
             ->add('createdBy.username', 'column', array(
                 'title' => 'Created By',
-                'filter_type' => 'select',
-                'filter_options' => array('' => 'All') + $this->getCollectionAsOptionsArray($users, 'username', 'username'),
-                'filter_property' => 'createdBy.username',
-                'search_type' => 'eq',
+                'filter' => array('select', array(
+                    'search_type' => 'eq',
+                    'select_options' => array('' => 'All') + $this->getCollectionAsOptionsArray($users, 'username', 'username'),
+                ))
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
