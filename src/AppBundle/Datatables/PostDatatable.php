@@ -93,11 +93,15 @@ class PostDatatable extends AbstractDatatableView
         ));
 
         $this->callbacks->set(array(
-            'init_complete' => ':post:init.js.twig'
+            'init_complete' => array(
+                'template' => ':post:init.js.twig'
+            )
         ));
 
         $this->events->set(array(
-            'order' => ':post:order.js.twig'
+            'order' => array(
+                'template' => ':post:order.js.twig'
+            )
         ));
 
         $this->columnBuilder
@@ -130,7 +134,8 @@ class PostDatatable extends AbstractDatatableView
             ))
             ->add('title', 'column', array(
                 'title' => 'Title',
-                'editable' => true
+                'editable' => true,
+                'editable_role' => 'ROLE_ADMIN'
             ))
             ->add('visible', 'boolean', array(
                 'title' => 'Visible',
