@@ -60,6 +60,7 @@ class PostDatatable extends AbstractDatatableView
             'extensions' => array(
                 'buttons' =>
                     array(
+                        'colvis',
                         'excel',
                         'pdf' => array(
                             'extend' => 'pdf',
