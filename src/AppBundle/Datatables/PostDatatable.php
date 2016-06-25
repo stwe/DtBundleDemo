@@ -15,7 +15,6 @@ class PostDatatable extends AbstractDatatableView
     /**
      * {@inheritdoc}
      */
-
     public function getLineFormatter()
     {
         $router = $this->router;
@@ -141,7 +140,7 @@ class PostDatatable extends AbstractDatatableView
                 'editable_role' => 'ROLE_ADMIN'
             ))
             ->add('images.fileName', 'gallery', array(
-                'title' => 'Bilder',
+                'title' => 'Images',
                 'relative_path' => 'images',
                 'imagine_filter' => 'thumbnail_50_x_50',
                 'imagine_filter_enlarged' => 'thumbnail_250_x_250',
