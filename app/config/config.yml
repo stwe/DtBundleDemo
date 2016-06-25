@@ -7,6 +7,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    max_uploads_for_posts: 4
 
 framework:
     #esi:             ~
@@ -39,6 +40,8 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
         - 'bootstrap3.html.twig'
+    globals:
+        max_uploads_for_posts: "%max_uploads_for_posts%"
 
 # Doctrine Configuration
 doctrine:
@@ -82,3 +85,30 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\User
+
+# VichUploaderBundle
+vich_uploader:
+    db_driver: orm
+    mappings:
+        media_image:
+            uri_prefix:         /images
+            upload_destination: "%kernel.root_dir%/../web/images"
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
+
+# LiipImagineBundle
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+    filter_sets:
+        cache: ~
+        thumbnail_50_x_50:
+            quality: 75
+            filters:
+                thumbnail: { size: [50, 50], mode: outbound }
+        thumbnail_250_x_250:
+            quality: 98
+            filters:
+                thumbnail: { size: [250, 250], mode: outbound }

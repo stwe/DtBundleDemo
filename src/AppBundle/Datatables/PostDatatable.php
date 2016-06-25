@@ -68,16 +68,18 @@ class PostDatatable extends AbstractDatatableView
                                 // show only the following columns:
                                 'columns' => array(
                                     '2', // title column
-                                    '3', // visible column
-                                    '4', // publishedAt column
-                                    '5', // updatedAt column
-                                    '6', // createdBy column
+                                    '4', // visible column
+                                    '5', // publishedAt column
+                                    '6', // updatedAt column
+                                    '7', // createdBy column
                                 )
                             )
                         ),
                     ),
                 'responsive' => true
-            )
+            ),
+            'highlight' => true,
+            'highlight_color' => 'yellow'
         ));
 
         $this->ajax->set(array(
@@ -137,6 +139,17 @@ class PostDatatable extends AbstractDatatableView
                 'title' => 'Title',
                 'editable' => true,
                 'editable_role' => 'ROLE_ADMIN'
+            ))
+            ->add('images.fileName', 'gallery', array(
+                'title' => 'Bilder',
+                'relative_path' => 'images',
+                'imagine_filter' => 'thumbnail_50_x_50',
+                'imagine_filter_enlarged' => 'thumbnail_250_x_250',
+                'enlarge' => true,
+                'holder_url' => 'https://placehold.it',
+                'holder_width' => '50',
+                'holder_height' => '50',
+                'view_limit' => 2,
             ))
             ->add('visible', 'boolean', array(
                 'title' => 'Visible',

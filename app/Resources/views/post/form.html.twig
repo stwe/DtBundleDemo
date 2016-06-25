@@ -1,0 +1,33 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.visible) }}
+    {% include ':image:image_form_row.html.twig' %}
+    {{ form_row(form._token) }}
+    <input type="submit" value="Save" class="btn btn-primary">
+{{ form_end(form, {'render_rest': false}) }}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var index = $("#imagesTable tbody tr").length;
+
+        function add() {
+            $("#imagesTable tbody").append($('#nl').html().replace(/\_\_name\_\_/g, index));
+        }
+
+        $("#addImage" ).click(function() {
+            var counter = $("#imagesTable tbody tr").length;
+            // limit uploads
+            if (counter < {{ max_uploads_for_posts }}) {
+                add();
+            }
+
+            index = index + 1;
+        });
+
+        $(document).on("click", "form a.delete-row", function () {
+            $(this).closest('tr').remove();
+        });
+    })
+</script>

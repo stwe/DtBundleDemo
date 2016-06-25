@@ -1,0 +1,46 @@
+{% macro imageRow(image) %}
+    <tr class="image_row">
+        <td>
+            {{ form_errors(image.title) }}
+            {{ form_widget(image.title) }}
+        </td>
+        <td>
+            {{ form_errors(image.image) }}
+            {{ form_widget(image.image) }}
+        </td>
+        <td>
+            <a href="javascript:void(0);" class="delete-row btn btn-danger">
+                <i class="fa fa-remove"></i>
+            </a>
+        </td>
+    </tr>
+{% endmacro %}
+
+<script type="text/html" id="nl">{{ _self.imageRow (form.images.vars.prototype) }} </script>
+
+<hr>
+
+<p><b>Images</b></p>
+
+<table id="imagesTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>File</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for image in form.images %}
+            {{ _self.imageRow(image) }}
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="form-actions">
+    <button type="button" id="addImage" class="btn bt-small btn-primary">
+        <i class="fa fa-plus-circle"></i>
+    </button>
+</div>
+
+<hr>

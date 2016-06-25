@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Validator\Constraints\Valid;
 
 /**
  * Class PostType
@@ -23,6 +25,13 @@ class PostType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('visible')
+            ->add('images', CollectionType::class, array(
+                'entry_type' => MediaType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'constraints' => new Valid()
+            ))
         ;
     }
 

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -77,11 +78,19 @@ class Post
     private $createdBy;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Media", mappedBy="post", cascade={"persist"})
+     */
+    private $images;
+
+    /**
      * Post constructor.
      */
     public function __construct()
     {
         $this->visible = false;
+        $this->images = new ArrayCollection();
     }
 
     /**
@@ -256,5 +265,48 @@ class Post
     public function getCreatedBy()
     {
         return $this->createdBy;
+    }
+
+    /**
+     * Add image.
+     *
+     * @param Media $image
+     *
+     * @return $this
+     */
+    public function addImage(Media $image)
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setPost($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove image.
+     *
+     * @param Media $image
+     *
+     * @return $this
+     */
+    public function removeImage(Media $image)
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get all images.
+     *
+     * @return ArrayCollection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

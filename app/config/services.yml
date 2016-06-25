@@ -1,7 +1,14 @@
 parameters:
 
 services:
+    app.form.extension.novalidate:
+        class: AppBundle\Form\Extension\NoValidateExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
+    app.form.extension.file:
+        class: AppBundle\Form\Extension\FileTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FileType }
     app.datatable.post:
         class: AppBundle\Datatables\PostDatatable
-        tags:
-            - { name: sg.datatable.view }
+        parent: sg_datatables.datatable.abstract
