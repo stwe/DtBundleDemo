@@ -17,7 +17,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  * Post controller.
  *
  * @Route("/post")
- * @Security("has_role('ROLE_USER')")
  *
  * @package AppBundle\Controller
  */
@@ -30,6 +29,7 @@ class PostController extends Controller
      *
      * @Route("/bulk/delete", name="post_bulk_delete")
      * @Method("POST")
+     * @Security("has_role('ROLE_ADMIN')")
      *
      * @return Response
      */
@@ -66,6 +66,7 @@ class PostController extends Controller
      *
      * @Route("/", name="post_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_USER')")
      *
      * @return Response
      */
@@ -81,6 +82,7 @@ class PostController extends Controller
 
     /**
      * @Route("/results", name="post_results")
+     * @Security("has_role('ROLE_USER')")
      *
      * @return Response
      */
@@ -101,6 +103,7 @@ class PostController extends Controller
      *
      * @Route("/new", name="post_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_USER')")
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
@@ -131,6 +134,7 @@ class PostController extends Controller
      *
      * @Route("/{id}", name="post_show", options={"expose"=true})
      * @Method("GET")
+     * @Security("has_role('ROLE_USER')")
      *
      * @return Response
      */
@@ -152,6 +156,7 @@ class PostController extends Controller
      *
      * @Route("/{id}/edit", name="post_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_USER') and post.isOwner(user) or has_role('ROLE_ADMIN')")
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
@@ -184,6 +189,7 @@ class PostController extends Controller
      *
      * @Route("/{id}", name="post_delete")
      * @Method("DELETE")
+     * @Security("has_role('ROLE_ADMIN')" )
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */

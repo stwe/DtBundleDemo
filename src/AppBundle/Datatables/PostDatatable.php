@@ -30,6 +30,30 @@ class PostDatatable extends AbstractDatatableView
     }
 
     /**
+     * Get User.
+     *
+     * @return mixed|null
+     */
+    private function getUser()
+    {
+        if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->securityToken->getToken()->getUser();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Is admin.
+     *
+     * @return bool
+     */
+    private function isAdmin()
+    {
+        return $this->authorizationChecker->isGranted('ROLE_ADMIN');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function buildDatatable(array $options = array())
@@ -117,6 +141,7 @@ class PostDatatable extends AbstractDatatableView
                 'actions' => array(
                     array(
                         'route' => 'post_bulk_delete',
+                        'role' => 'ROLE_ADMIN',
                         'label' => 'Delete',
                         'icon' => 'fa fa-times',
                         'attributes' => array(
@@ -137,7 +162,7 @@ class PostDatatable extends AbstractDatatableView
             ->add('title', 'column', array(
                 'title' => 'Title',
                 'editable' => true,
-                'editable_role' => 'ROLE_ADMIN'
+                'editable_role' => 'ROLE_ADMIN' // Limitation: Normally also the user can edit his postings (issue #372).
             ))
             ->add('images.fileName', 'gallery', array(
                 'title' => 'Images',
@@ -208,6 +233,7 @@ class PostDatatable extends AbstractDatatableView
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
+                        //'role' => 'ROLE_USER',
                     ),
                     array(
                         'route' => 'post_edit',
@@ -222,9 +248,14 @@ class PostDatatable extends AbstractDatatableView
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
-                        'role' => 'ROLE_ADMIN',
+                        //'role' => 'ROLE_USER',
                         'render_if' => function($rowEntity) {
-                            return ($rowEntity['visible'] === true);
+                            // caution the line $rowEntity['createdBy']['username'] is already formatted in the lineFormatter
+                            if ($rowEntity['createdBy']['id'] == $this->getUser()->getId() or true === $this->isAdmin()) {
+                                return true;
+                            };
+
+                            return false;
                         },
                     )
                 )
