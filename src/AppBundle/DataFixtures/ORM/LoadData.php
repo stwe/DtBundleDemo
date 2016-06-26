@@ -46,6 +46,7 @@ class LoadData implements FixtureInterface
             $post[$i]->setTitle('Title ' . $i);
             $post[$i]->setContent($this->getPostContent());
             $post[$i]->setVisible(rand(0, 1));
+            $post[$i]->setRating(rand(1, 5));
             $mod = clone $now;
             $post[$i]->setPublishedAt($mod->add(new \DateInterval("P{$i}D")));
 

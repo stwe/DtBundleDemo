@@ -54,6 +54,21 @@ class Post
     private $visible;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Type(
+     *     type="integer"
+     * )
+     * @Assert\Range(
+     *     min="1",
+     *     max="5"
+     * )
+     */
+    private $rating;
+
+    /**
      * @var \datetime
      *
      * @Gedmo\Timestampable(on="create")
@@ -193,6 +208,30 @@ class Post
     public function getVisible()
     {
         return $this->visible;
+    }
+
+    /**
+     * Set rating.
+     *
+     * @param int $rating
+     *
+     * @return $this
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating.
+     *
+     * @return int
+     */
+    public function getRating()
+    {
+        return $this->rating;
     }
 
     /**

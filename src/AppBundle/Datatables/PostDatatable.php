@@ -159,12 +159,30 @@ class PostDatatable extends AbstractDatatableView
                     'select_options' => array('' => 'All', '1' => 'Yes', '0' => 'No')
                 ))
             ))
+            ->add('rating', 'progress_bar', array(
+                'title' => 'Rating',
+                'value_min' => '1',
+                'value_max' => '5',
+                'bar_classes' => 'progress-bar-striped',
+                'filter' => array('slider', array(
+                    'min' => 1.0,
+                    'max' => 5.0,
+                    'cancel_button' => true,
+                    'handle' => 'custom' // display content like unicode characters or fontawesome icons
+                    /* @see css rule in base.html.twig
+                    .slider-handle.custom::before {
+                        content: "\f005";
+                        font-family: FontAwesome;
+                        left: -5px;
+                        position: absolute;
+                        top: 0;
+                        color: dodgerblue;
+                    }
+                    */
+                ))
+            ))
             ->add('publishedAt', 'datetime', array(
                 'title' => 'Published at',
-                'filter' => array('daterange', array())
-            ))
-            ->add('updatedAt', 'datetime', array(
-                'title' => 'Updated at',
                 'filter' => array('daterange', array())
             ))
             ->add('createdBy.username', 'column', array(

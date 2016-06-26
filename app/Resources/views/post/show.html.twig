@@ -22,6 +22,10 @@
                 <td>{% if post.visible %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
+                <th>Rating</th>
+                <td>{{ post.rating }}</td>
+            </tr>
+            <tr>
                 <th>Publishedat</th>
                 <td>{% if post.publishedAt %}{{ post.publishedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>

@@ -25,6 +25,7 @@ class PostType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('visible')
+            ->add('rating')
             ->add('images', CollectionType::class, array(
                 'entry_type' => MediaType::class,
                 'allow_add' => true,
