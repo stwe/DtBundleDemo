@@ -138,10 +138,15 @@ class PostDatatable extends AbstractDatatableView
                     'class' => 'testclass',
                     'name' => 'testname',
                 ),
+                'add_if' => function() {
+                    return $this->isAdmin();
+                },
                 'actions' => array(
                     array(
                         'route' => 'post_bulk_delete',
-                        'role' => 'ROLE_ADMIN',
+                        'render_if' => function() {
+                            return $this->isAdmin();
+                        },
                         'label' => 'Delete',
                         'icon' => 'fa fa-times',
                         'attributes' => array(
@@ -162,7 +167,14 @@ class PostDatatable extends AbstractDatatableView
             ->add('title', 'column', array(
                 'title' => 'Title',
                 'editable' => true,
-                'editable_role' => 'ROLE_ADMIN' // Limitation: Normally also the user can edit his postings (issue #372).
+                'editable_if' => function($row) {
+                    // caution the line $row['createdBy']['username'] is already formatted in the lineFormatter
+                    if ($row['createdBy']['id'] == $this->getUser()->getId() or true === $this->isAdmin()) {
+                        return true;
+                    };
+
+                    return false;
+                },
             ))
             ->add('images.fileName', 'gallery', array(
                 'title' => 'Images',
@@ -233,7 +245,6 @@ class PostDatatable extends AbstractDatatableView
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
-                        //'role' => 'ROLE_USER',
                     ),
                     array(
                         'route' => 'post_edit',
@@ -248,10 +259,9 @@ class PostDatatable extends AbstractDatatableView
                             'class' => 'btn btn-primary btn-xs',
                             'role' => 'button'
                         ),
-                        //'role' => 'ROLE_USER',
-                        'render_if' => function($rowEntity) {
-                            // caution the line $rowEntity['createdBy']['username'] is already formatted in the lineFormatter
-                            if ($rowEntity['createdBy']['id'] == $this->getUser()->getId() or true === $this->isAdmin()) {
+                        'render_if' => function($row) {
+                            // caution the line $row['createdBy']['username'] is already formatted in the lineFormatter
+                            if ($row['createdBy']['id'] == $this->getUser()->getId() or true === $this->isAdmin()) {
                                 return true;
                             };
 
