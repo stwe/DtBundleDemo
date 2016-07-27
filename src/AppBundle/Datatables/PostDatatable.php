@@ -107,7 +107,8 @@ class PostDatatable extends AbstractDatatableView
 
         $this->ajax->set(array(
             'url' => $this->router->generate('post_results'),
-            'type' => 'GET'
+            'type' => 'GET',
+            'pipeline' => 5
         ));
 
         $this->options->set(array(
@@ -224,9 +225,9 @@ class PostDatatable extends AbstractDatatableView
             ))
             ->add('createdBy.username', 'column', array(
                 'title' => 'Created By',
-                'filter' => array('select', array(
+                'filter' => array('select2', array(
                     'search_type' => 'eq',
-                    'select_options' => array('' => 'All') + $this->getCollectionAsOptionsArray($users, 'username', 'username'),
+                    'select_options' => $this->getCollectionAsOptionsArray($users, 'username', 'username'),
                 ))
             ))
             ->add(null, 'action', array(
