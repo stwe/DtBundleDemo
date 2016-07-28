@@ -99,7 +99,8 @@ class PostDatatable extends AbstractDatatableView
                             )
                         ),
                     ),
-                'responsive' => true
+                'responsive' => true,
+                'fixedHeader' => true,
             ),
             'highlight' => true,
             'highlight_color' => 'yellow'
