@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d237ea42d18ee441393a2c9f5ad5f93f",
-    "content-hash": "357d9999faf0ce5df80965cc8c3b69b3",
+    "hash": "89865975ae04595999ad743d38fcdd38",
+    "content-hash": "2d69c0d235ff87853680cf628fbe0e30",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -879,12 +879,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "147ca6888712365e5ad3b7906f7b6e8654da2f48"
+                "reference": "b7b93061dbaccec6acbedab7f200869e20909861"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/147ca6888712365e5ad3b7906f7b6e8654da2f48",
-                "reference": "147ca6888712365e5ad3b7906f7b6e8654da2f48",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/b7b93061dbaccec6acbedab7f200869e20909861",
+                "reference": "b7b93061dbaccec6acbedab7f200869e20909861",
                 "shasum": ""
             },
             "require": {
@@ -943,7 +943,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-08-31 11:01:35"
+            "time": "2016-09-02 11:25:50"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1696,17 +1696,17 @@
         },
         {
             "name": "sg/datatablesbundle",
-            "version": "dev-master",
+            "version": "v0.12",
             "target-dir": "Sg/DatatablesBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stwe/DatatablesBundle.git",
-                "reference": "3a9cca3e76811175539938a26eda691ea5441026"
+                "reference": "472f758d715580bf364cbbf3566d9811d51aa790"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stwe/DatatablesBundle/zipball/3a9cca3e76811175539938a26eda691ea5441026",
-                "reference": "3a9cca3e76811175539938a26eda691ea5441026",
+                "url": "https://api.github.com/repos/stwe/DatatablesBundle/zipball/472f758d715580bf364cbbf3566d9811d51aa790",
+                "reference": "472f758d715580bf364cbbf3566d9811d51aa790",
                 "shasum": ""
             },
             "require": {
@@ -1757,7 +1757,7 @@
                 "symfony3",
                 "table"
             ],
-            "time": "2016-08-30 17:20:51"
+            "time": "2016-09-03 15:20:52"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -2406,16 +2406,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.1",
+            "version": "v1.24.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512"
+                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3566d311a92aae4deec6e48682dc5a4528c4a512",
-                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
+                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
                 "shasum": ""
             },
             "require": {
@@ -2463,7 +2463,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-05-30 09:11:59"
+            "time": "2016-09-01 17:50:53"
         },
         {
             "name": "vich/uploader-bundle",
@@ -2862,16 +2862,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.9",
+            "version": "v2.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "bc61b781fa7f07f9a2ed4e69b15d5c2238695fc0"
+                "reference": "fc69aad7dba2ab3eed5cf90c8e3ede4fb961effd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/bc61b781fa7f07f9a2ed4e69b15d5c2238695fc0",
-                "reference": "bc61b781fa7f07f9a2ed4e69b15d5c2238695fc0",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/fc69aad7dba2ab3eed5cf90c8e3ede4fb961effd",
+                "reference": "fc69aad7dba2ab3eed5cf90c8e3ede4fb961effd",
                 "shasum": ""
             },
             "require": {
@@ -2913,14 +2913,13 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:31:50"
+            "time": "2016-08-19 06:48:01"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20,
-        "sg/datatablesbundle": 20
+        "friendsofsymfony/user-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
