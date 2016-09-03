@@ -100,12 +100,20 @@ class Post
     private $images;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"persist"}, orphanRemoval=true)
+     */
+    private $comments;
+
+    /**
      * Post constructor.
      */
     public function __construct()
     {
         $this->visible = false;
         $this->images = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -347,5 +355,44 @@ class Post
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Add comment.
+     *
+     * @param Comment $comment
+     *
+     * @return $this
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments->add($comment);
+        $comment->setPost($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove comment.
+     *
+     * @param Comment $comment
+     *
+     * @return $this
+     */
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+
+        return $this;
+    }
+
+    /**
+     * Get comments.
+     *
+     * @return ArrayCollection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

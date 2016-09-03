@@ -1,5 +1,33 @@
 {% extends '::base.html.twig' %}
 
 {% block main %}
+
+    <h2>Posts</h2>
     {{ datatable_render(datatable) }}
+    <hr>
+    <h2>Comments</h2>
+
+    <script type="text/javascript">
+
+        function loadCommentsTable(id) {
+            $.ajax({
+                type: "GET",
+                url: Routing.generate('comment_index', {id: id})
+            })
+            .done(function(response) {
+                $('#ajax_content').html(response);
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                alert('Error : ' + errorThrown);
+            });
+        }
+
+        loadCommentsTable(0);
+
+        $('#post_datatable tbody').on('click', 'tr', function () {
+            loadCommentsTable(this.id)
+        });
+
+    </script>
+
 {% endblock %}

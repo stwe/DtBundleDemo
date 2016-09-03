@@ -118,6 +118,7 @@ class PostDatatable extends AbstractDatatableView
             'individual_filtering' => true,
             'individual_filtering_position' => 'head',
             'use_integration_options' => true,
+            'row_id' => 'id'
         ));
 
         $this->callbacks->set(array(

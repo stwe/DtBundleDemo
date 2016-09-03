@@ -12,3 +12,6 @@ services:
     app.datatable.post:
         class: AppBundle\Datatables\PostDatatable
         parent: sg_datatables.datatable.abstract
+    app.datatable.comment:
+        class: AppBundle\Datatables\CommentDatatable
+        parent: sg_datatables.datatable.abstract
