@@ -30,7 +30,7 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "stof/doctrine-extensions-bundle": "^1.2",
-        "sg/datatablesbundle": "v0.12",
+        "sg/datatablesbundle": "v0.13",
         "vich/uploader-bundle": "^1.1",
         "liip/imagine-bundle": "^1.5"
     },
