@@ -24,7 +24,7 @@ php bin/console fos:js-routing:dump
 ### 3. Run fixtures
 
 ```
-php bin/console doctrine:fixtures:load --no-interaction
+php bin/console doctrine:schema:drop --force && php bin/console doctrine:schema:update --force && php bin/console doctrine:fixtures:load --no-interaction
 ```
 
 ## Login
